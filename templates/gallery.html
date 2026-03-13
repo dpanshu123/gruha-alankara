@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}Gallery{% endblock %} {% block content %}
+
+<div class="page-header">
+	<h2>Design Gallery</h2>
+	<p>All AI-generated interior designs</p>
+</div>
+
+<div class="gallery-grid">
+	{% if designs %} {% for design in designs %}
+
+	<div class="gallery-item">
+		<img src="{{ url_for('static', filename='uploads/' + design.image_path) }}" alt="Design {{ design.design_id }}" />
+
+		<div class="gallery-item-info">
+			<strong>{{ design.style_theme | capitalize }}</strong>
+
+			<br />
+
+			<small>{{ design.created_at.strftime('%b %d, %Y') }}</small>
+		</div>
+
+		{% if design.ai_output %}
+
+		<div class="ai-output">
+			<h4>AI Suggestions</h4>
+
+			<pre>{{ design.ai_output }}</pre>
+		</div>
+
+		{% endif %}
+	</div>
+
+	{% endfor %} {% else %}
+
+	<div class="empty-state">
+		<p>No designs yet. Be the first to create one!</p>
+
+		<a href="{{ url_for('create_design') }}" class="btn">Create a Design</a>
+	</div>
+
+	{% endif %}
+</div>
+
+{% endblock %}

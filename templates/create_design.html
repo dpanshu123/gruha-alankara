@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Create Design{% endblock %} {% block content %}
+
+<div class="create-section">
+	<h2>Create a New Design</h2>
+	<p class="subtitle">Point your camera at a room and capture it to get started.</p>
+
+	<video id="cameraFeed" class="camera-feed" autoplay></video>
+
+	<div class="camera-controls">
+		<button id="captureBtn" class="btn">Capture Room</button>
+	</div>
+
+	<p id="cameraMessage"></p>
+
+	<canvas id="captureCanvas" style="display: none"></canvas>
+</div>
+
+{% endblock %}
