@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+
+<div class="hero">
+	<h1>Design Your Dream Interior</h1>
+	<p>Upload a photo of your room and let AI reimagine it with stunning style themes.</p>
+
+	<div class="hero-actions">
+		{% if session.get('user_id') %}
+		<a href="{{ url_for('create_design') }}" class="btn">Start Designing</a>
+		<a href="{{ url_for('gallery') }}" class="btn btn-outline">View Gallery</a>
+		{% else %}
+		<a href="{{ url_for('register') }}" class="btn">Get Started Free</a>
+		<a href="{{ url_for('login') }}" class="btn btn-outline">Sign In</a>
+		{% endif %}
+	</div>
+</div>
+
+<div class="features">
+	<div class="feature-card">
+		<div class="feature-icon">📷</div>
+		<h3>Capture Your Room</h3>
+		<p>Use your camera or upload a photo of any room in your home.</p>
+	</div>
+
+	<div class="feature-card">
+		<div class="feature-icon">✨</div>
+		<h3>AI Redesigns It</h3>
+		<p>Our AI applies beautiful interior design styles to your photo instantly.</p>
+	</div>
+
+	<div class="feature-card">
+		<div class="feature-icon">🛋️</div>
+		<h3>Browse &amp; Book</h3>
+		<p>Explore furniture recommendations and book the pieces you love.</p>
+	</div>
+</div>
+
+{% endblock %}
